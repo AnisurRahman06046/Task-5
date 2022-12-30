@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [text, setText] = useState("click me");
+  const [count, setCount] = useState(1);
+
+  const handleBtnClick = () => {
+    setCount(count + 1);
+    if (count === 3) {
+      setText("bang");
+      setCount(1);
+    } else {
+      setText("click me");
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button
+        className="btn btn-primary mx-[500px] my-8"
+        onClick={handleBtnClick}
+      >
+        {text}
+      </button>
     </div>
   );
 }
